@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<!-- 1) 게시글 작성 -->
+	<insert id="insert">
+		insert into tbl_board (title, context, writer) values (#{title}, #{content}, #{writer})
+	</insert>
+
+	<!-- 2) 게시글 상세보기 -->
+	<select id="view" resultType="com.example.project.vo.BoardVO">
+		select * from tbl_board where bno = #{bno}
+	</select>
+
+	<!-- 3) 게시글 수정 -->
+	<update id = "updateArticle">
+	update tbl_board set 
+	title = #{title}, content = #{content}, writer = #{writer}
+	where bno=#{bno} <!-- 글 번호가 같아야 수정할 수 있음 -->
+	</update>
+
+	<!-- 4) 게시글 삭제 : 번호가 같으면 삭제하기 -->
+	<delete id="delete">
+	delete from tbl_board where bno=#{bno}
+	</delete>
+
+	<!-- 5) 게시글 전체 목록 : bno 기준으로 내림차순, 날짜로 내림차순 -->
+	<select id="listAll" resultType="com.example.project.vo.BoardVO">
+	select * from tbl_board order by bno desc, regdate desc
+	</select>
+
+	<!-- 6) 조회수 -->
+	<update id="increaseViewcnt">
+	update tbl_board set viewcnt = viewcnt +1
+	where bno=#{bno}
+	</update>
+	
+</mapper>
