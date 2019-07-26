@@ -56,7 +56,7 @@ public class BoardDAOImpl implements BoardDAO {
 //	}
 	
 	@Override //페이지 범위
-	public List<BoardVO> listAll(int start, int end, Stri	ng searchOption, String keyword) throws Exception {
+	public List<BoardVO> listAll(int start, int end, String searchOption, String keyword) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
