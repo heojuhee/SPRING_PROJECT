@@ -25,14 +25,75 @@
 	</delete>
 
 	<!-- 5) 게시글 전체 목록 : bno 기준으로 내림차순, 날짜로 내림차순 -->
-	<select id="listAll" resultType="com.example.project.vo.BoardVO">
+	<select id="listAll1" resultType="com.example.project.vo.BoardVO">
 	select * from tbl_board order by bno desc, regdate desc
 	</select>
+	
+	<!-- 5-1)검색 기능이 있는 전체목록 -->
+	<select id="listAll2" resultType = "com.example.project.vo.BoardVO">
+	select * from tbl_board
+	<include refid="search"></include>
+	order by bno desc, regdate desc	 
+	</select>
+	
+	<!-- 5-2)검색 기능이 있는 전체목록 -->
+	<select id="listAll" resultType="com.example.project.vo.BoardVO">
+	select * from tbl_board
+	<include refid="search"></include>
+	order by bno desc, regdate desc
+	<include refid="paging"></include>
+	</select>
+
+	<sql id="paging">
+		limit #{start}, #{end}
+	</sql>
+	
+	<sql id = "search">
+		<choose>
+			<when test = "searchOption.equals('all')" >
+				where writer like concat('%', #{keyword}, '%')
+				<!-- like %keyword%  -->
+				or context like concat('%',#{keyword},'%')
+				or title like concat('%',#{keyword},'%')
+			</when>
+		<otherwise>
+			where ${searchOption} like concat('%',#{keyword},'%')
+		</otherwise>
+		</choose>
+	</sql>
 
 	<!-- 6) 조회수 -->
 	<update id="increaseViewcnt">
 	update tbl_board set viewcnt = viewcnt +1
 	where bno=#{bno}
 	</update>
+	
+	<!-- 7) 검색이 들어간 레코드 갯수 -->
+	<select id = "countArticle" resultType = "int">
+		select count(*) from tbl_board
+		<include refid = "search"></include>
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 </mapper>

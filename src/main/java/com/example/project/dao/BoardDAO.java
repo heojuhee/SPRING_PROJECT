@@ -21,7 +21,10 @@ public interface BoardDAO {
 	//public List<BoardVO> listAll() throws Exception;	
 	
 	//5-2) 검색어를 이용한 목록
-	public List<BoardVO> listAll(String serachOption, String keyword) throws Exception;
+	//public List<BoardVO> listAll(String serachOption, String keyword) throws Exception;
+	
+	//5-3) 페이지 목록 만들기
+	public List<BoardVO> listAll(int start, int end, String serachOption, String keyword) throws Exception; 
 	
 	//6) 조회수
 	public void increaseViewcnt(int bno) throws Exception;

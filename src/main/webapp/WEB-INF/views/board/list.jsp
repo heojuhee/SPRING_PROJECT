@@ -6,10 +6,40 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp"%>
+<script src ="https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+	$("#btnWriter").click(function(){
+		location.href="${path}/project/board/write";
+	})
+})
+
+</script>
+
+
 </head>
 <body>
 	<%@ include file="../include/menu.jsp"%>
 	<h2>게시글 목록</h2>
+	<hr>
+	<form name = "form1" method="post" action = "${path}/project/board/list">
+	<select name = "searchOption">
+		<option value = "all" <c:out value = "${map.searchOption=='all'?selected: ''}" />>
+		전체(작성자+내용+제목)</option>
+		
+		<option value = "writer" <c:out value = "${map.searchOption=='writer'?selected: ''}" />>
+		작성자</option>
+		
+		<option value = "content" <c:out value = "${map.searchOption=='content'?selected: ''}" />>
+		내용</option>
+		
+		<option value = "title" <c:out value = "${map.searchOption=='title'?selected: ''}" />>
+		제목</option>
+	</select>
+	<input type = "text" name = "keyword" value = "${map.keyword}">
+	<input type = "submit" value = "조회">
+	</form>
+	
 	<table border="1" width="600px">
 		<tr>
 			<th>번호</th>
@@ -18,7 +48,7 @@
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
-		<c:forEach var="row" items="${list}">
+		<c:forEach var="row" items="${map.list}">
 		<tr>
 				<td>${row.bno}</td>
 				<td><a href= "${path}/project/board/view?bno=${row.bno}">${row.title}</a>
