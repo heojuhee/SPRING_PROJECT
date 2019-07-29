@@ -9,16 +9,11 @@
 </head>
 <body>
 
-<c:if test = "${msg=='성공'}">
+<c:if test = "${msg=='성공ㅋ'}">
 <h2>${sessionScope.userName }</h2>(${sessionScope.userId})님 환영합니다. </h2>
 </c:if>
 <br>
-<A href = "${path}/login/logout">로그아웃</A>
+<A href = "${path}/project/login/logout">로그아웃</A>
 <!-- login/login -> id/password -> 로그인 버튼 클릭 -->
-
-
-
-
-
 </body>
 </html>

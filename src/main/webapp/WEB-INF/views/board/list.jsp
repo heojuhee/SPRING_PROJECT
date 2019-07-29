@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		$("#btnWriter").click(function() {
@@ -47,6 +48,8 @@
 		</select> <input type="text" name="keyword" value="${map.keyword}"> <input
 			type="submit" value="조회">
 	</form>
+	<br>
+
 
 	<table border="1" width="600px">
 		<tr>
@@ -61,20 +64,19 @@
 				<td>${row.bno}</td>
 				<td><a href="${path}/project/board/view?bno=${row.bno}">${row.title}</a>
 				<td>${row.writer}</td>
-				<td><fmt:formatDate value="${row.regdate}" pattern="yyyy-mm-dd" /></td>
+				<td><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd" /></td>
 				<td>${row.viewcnt}</td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspa="5"><c:if test="${map.boardPager.curBlock > 1 }">
+			<td colspan="5"><c:if test="${map.boardPager.curBlock > 1 }">
 					<a href="javascript:list('1')"> [처음 ] </a>
 				</c:if> <c:if test="${map.boardPager.curBlock > 1 }">
 					<a href="javascript:list('${map.boardPager.prevPage}')"> [이전 ]
 					</a>
 				</c:if> <!-- 처음, 이전 ,번호들 나열, 다음, 끝 --> <c:forEach var="num"
-					begin=${map.boardPager.blockBegin
-					}
-					" end="${map.boardPager.blockEnd }">
+					begin="${map.boardPager.blockBegin}"
+					end="${map.boardPager.blockEnd }">
 					<c:choose>
 						<c:when test="${num == map.boardPager.curPage }">
 							<span style="color: re"> ${num}</span>
@@ -86,8 +88,11 @@
 				</c:forEach></td>
 		</tr>
 	</table>
-	<form>
-		<input type="button" value="글쓰기 " id="btnWriter">
-	</form>
+	<c:if test=${sessionScorpe.usreId != null}>
+		<form>
+			<input type="button" value="글쓰기 " id="btnWriter">
+		</form>
+	</c:if>
+
 </body>
 </html>

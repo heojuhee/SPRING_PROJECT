@@ -58,7 +58,7 @@ public class BoardController {
 	@RequestMapping("board/list")
 		public ModelAndView list
 		(@RequestParam(defaultValue = "title") String searchOption, 
-		 @RequestParam(defaultValue="")String keyword,
+		 @RequestParam(defaultValue="") String keyword,
 		 @RequestParam(defaultValue = "1") int curPage)
 		throws Exception{
 		
@@ -91,7 +91,11 @@ public class BoardController {
 
 	// 3) 등록
 	@RequestMapping(value = "board/insert", method = RequestMethod.POST)
-	public String insert(@ModelAttribute BoardVO vo) throws Exception {
+	public String insert(@ModelAttribute BoardVO vo, HttpSession session) throws Exception {
+		String writer = (String) session.getAttribute("userId");
+		String userName = (String) session.getAttribute("userName");
+		vo.setWriter(writer);
+		vo.setUserName(userName);
 		boardService.create(vo);
 		return "redirect:list";
 	}

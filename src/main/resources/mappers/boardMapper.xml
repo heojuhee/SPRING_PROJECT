@@ -4,7 +4,7 @@
 <mapper namespace="board">
 	<!-- 1) 게시글 작성 -->
 	<insert id="insert">
-		insert into tbl_board (title, context, writer) values (#{title}, #{content}, #{writer})
+		insert into tbl_board (title, context, writer) values (#{title}, #{context}, #{writer})
 	</insert>
 
 	<!-- 2) 게시글 상세보기 -->
@@ -15,7 +15,7 @@
 	<!-- 3) 게시글 수정 -->
 	<update id = "updateArticle">
 	update tbl_board set 
-	title = #{title}, content = #{content}, writer = #{writer}
+	title = #{title}, context = #{context}, writer = #{writer}
 	where bno=#{bno} <!-- 글 번호가 같아야 수정할 수 있음 -->
 	</update>
 
@@ -24,19 +24,28 @@
 	delete from tbl_board where bno=#{bno}
 	</delete>
 
-	<!-- 5) 게시글 전체 목록 : bno 기준으로 내림차순, 날짜로 내림차순 -->
+	<!-- 5-1) 게시글 전체 목록 : bno 기준으로 내림차순, 날짜로 내림차순 -->
 	<select id="listAll1" resultType="com.example.project.vo.BoardVO">
 	select * from tbl_board order by bno desc, regdate desc
 	</select>
 	
-	<!-- 5-1)검색 기능이 있는 전체목록 -->
+	<!-- 5-2)검색 기능이 있는 전체목록 -->
 	<select id="listAll2" resultType = "com.example.project.vo.BoardVO">
 	select * from tbl_board
 	<include refid="search"></include>
 	order by bno desc, regdate desc	 
 	</select>
 	
-	<!-- 5-2)검색 기능이 있는 전체목록 -->
+	<!-- 5-3)검색 기능이 있는 전체목록 -->
+	<select id="listAll3" resultType="com.example.project.vo.BoardVO">
+	select bno, title, content, b.regdate,viewcnt, username
+	from tbl_board b, tbl_member m 
+	<include refid="search"></include>
+	order by bno desc, regdate desc
+	<include refid="paging"></include>
+	</select>
+	
+	<!-- 5-4)회원전용 게시판 목록 -->
 	<select id="listAll" resultType="com.example.project.vo.BoardVO">
 	select * from tbl_board
 	<include refid="search"></include>

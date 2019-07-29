@@ -5,7 +5,7 @@
 
 <select id = "loginCheck" resultType = "String">
 select username from  tbl_member
-{userId] and userpw = #{userPw}
+where userid=#{userId} and userpw = #{userPw}
 </select>
 
 <select id = "viewMember" resultType = "com.example.project.vo.MemberVO">

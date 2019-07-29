@@ -25,7 +25,7 @@ public class LoginController {
 	}
 
 	// 2) 로그인 체크하는 화면 (로그인 처리)
-	@RequestMapping("login/login")
+	@RequestMapping("login/loginCheck")
 	public ModelAndView loginCheck(@ModelAttribute MemberVO vo, HttpSession session) {
 		boolean result = loginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();

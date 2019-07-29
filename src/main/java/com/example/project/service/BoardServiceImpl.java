@@ -65,7 +65,7 @@ public class BoardServiceImpl implements BoardService {
 	//페이지 처리한 목록 
 	@Override
 	public List<BoardVO> listAll(int start, int end, String searchOption, String keyword) throws Exception {
-		return boardDao.listAll(start, end, searchOption, keyword);
+		return boardDao.listAll(start-1, end, searchOption, keyword);
 	}
 
 	@Override

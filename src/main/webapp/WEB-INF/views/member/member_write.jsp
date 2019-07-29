@@ -12,7 +12,7 @@
 
 <h2> 회원등록 폼</h2>
 <hr>
-<form name = "form1" method = "post" action = "${path}/member/insert">
+<form name = "form1" method = "post" action = "${path}/project/member/insert">
 아이디 : <input type = "text" name = "userId" value = "" > <br>
 비밀번호 : <input type = "password" name = "userPw" value = "" ><br>
 이름 : <input type = "text" name="userName" value = "" ><br>

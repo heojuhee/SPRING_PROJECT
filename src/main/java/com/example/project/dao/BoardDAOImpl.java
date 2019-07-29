@@ -29,7 +29,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void update(BoardVO vo) throws Exception {
-		sqlSession.update("board.update", vo);
+		sqlSession.update("board.updateArticle", vo);
 	}
 
 	@Override

@@ -23,7 +23,7 @@ $(function() {
 			$("#userPw").focuse();
 			return;
 		}
-		document.form1.action = "${path}/login/loginCheck";
+		document.form1.action = "${path}/project/login/loginCheck";
 		document.form1.submit();
 	});
 })
@@ -44,7 +44,7 @@ $(function() {
 <input type = "button" value = "로그인" id = "btnLogin">
 <input type = "reset" value = "로그인 취소">
 </form>
-<c:if test = "${msg=='실패' }">
+<c:if test = "${msg=='실패ㅋ' }">
 <div> 아이디와 비밀번호가 일치하지 않습니다.</div>
 </c:if>
 <c:if test = "${msg=='logout' }">
