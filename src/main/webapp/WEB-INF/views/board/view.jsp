@@ -46,12 +46,11 @@
 제목 : <input type = "text" name = "title" id = "title" size = "80" value = "${dto.title}" ><br>
 내용 : <textarea name = "context" id = "context" rows="5" cols = "100">${dto.context}</textarea><br>
 작성자 : <input type = "text" name = "writer" id = "writer" size = "80" value = "${dto.writer }" ><br>
+<c:if test="${sessionScope.userId==dto.writer}">
 <input type = "button" value = "수정" id = "btnUpdate" >
 <input type = "button" value = "삭제" id = "btnDelete" >
+</c:if>
 <input type = "button" value = "목록보기" id = "btnList"> 
-
-
-
 </form>
 
 </body>

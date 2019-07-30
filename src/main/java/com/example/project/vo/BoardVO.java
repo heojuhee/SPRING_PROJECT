@@ -13,6 +13,15 @@ public class BoardVO {
 	private int viewcnt; //조회수
 	private String userName; //사용자 이름 --> getter / setter추가
 	
+	private int recnt;
+	
+	public int getRecnt() {
+		return recnt;
+	}
+	public void setRecnt(int recnt) {
+		this.recnt = recnt;
+	}
+	
 	//getter/setter 추가
 	public int getBno() {
 		return bno;
@@ -64,4 +73,5 @@ public class BoardVO {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", context=" + context + ", writer=" + writer + ", regdate="
 				+ regdate + ", viewcnt=" + viewcnt + ", userName=" + userName + "]";
 	}
+	
 }

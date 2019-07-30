@@ -10,8 +10,17 @@
 </head>
 <body>
 <c:set var="path" value = "${pageContex.request.contexPath}" />
-<a href = "${path}/member/list">회원목록 보기</a>
-<a href = "${path}/member/insert">회원등록하기</a>
-<a href = "${path}/member/list">게시판</a>
+<a href = "${path}/project/member/list">회원목록 보기</a>
+<a href = "${path}/project/member/writer">회원등록하기</a>
+<a href = "${path}/project/member/list">게시판</a>
+<c:choose>
+<c:when test = "${sessionScope.userId==null }">
+ <a href = "${path}/project/login/login"> 로그인 </a>
+ </c:when>
+ <c:otherwise>
+ ${sessionScope.userName}님이 로그인 중입니다.
+ <a href = "${path}/project/login/loginout" >로그아웃</a>
+ </c:otherwise>
+</c:choose>
 </body>
 </html>

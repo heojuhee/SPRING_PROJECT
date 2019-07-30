@@ -15,5 +15,6 @@
 <br>
 <A href = "${path}/project/login/logout">로그아웃</A>
 <!-- login/login -> id/password -> 로그인 버튼 클릭 -->
+<A href = "${path}/project/board/list">게시판</A>
 </body>
 </html>

@@ -88,7 +88,7 @@
 				</c:forEach></td>
 		</tr>
 	</table>
-	<c:if test=${sessionScorpe.usreId != null}>
+	<c:if test="${sessionScorpe.usreId != null}">
 		<form>
 			<input type="button" value="글쓰기 " id="btnWriter">
 		</form>
