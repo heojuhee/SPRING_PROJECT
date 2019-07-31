@@ -67,11 +67,8 @@
 	
 	<!-- 5-5)댓글 갯수 표시되는 게시판 목록 -->
 	<select id="listAll" resultType="com.example.project.vo.BoardVO">
-		select bno, title, content, writer, b.regdate,
-		viewcnt, username from tbl_board b, tbl_member m
-		(select count(*) from tbl_reply where bno=#{bno})
-		
-		
+		select bno, title, context, writer, b.regdate, viewcnt, username, (select count(*) from tbl_reply where bno=#{bno})as recnt
+		from tbl_board b, tbl_member m		
 		<include refid="search"></include>
 		order by bno desc, regdate desc
 		<include refid="paging"></include>

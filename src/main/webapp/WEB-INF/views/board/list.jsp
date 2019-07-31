@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp"%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+<script src= "http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		$("#btnWriter").click(function() {
@@ -62,7 +61,12 @@
 		<c:forEach var="row" items="${map.list}">
 			<tr>
 				<td>${row.bno}</td>
-				<td><a href="${path}/project/board/view?bno=${row.bno}">${row.title}</a>
+				<td><a href="${path}/project/board/view?bno=${row.bno}&curPage=${map.boardPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title}</a>
+				<c:if test="${row.recnt}>0}">
+				<span style = "color:red;">(${row.recnt})</span>
+				</c:if>
+				</a>
+				</td>
 				<td>${row.writer}</td>
 				<td><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd" /></td>
 				<td>${row.viewcnt}</td>

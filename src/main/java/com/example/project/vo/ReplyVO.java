@@ -11,7 +11,7 @@ public class ReplyVO {
 	private String replyer; //댓글 작성자
 	private Date regdate; // 등록 날짜
 	private Date updatedate; //수정 날짜
-	private String suerName; //댓글 작성자
+	private String userName; //댓글 작성자
 	
 	//getter, setter 모두 추가
 	public Integer getRno() {
@@ -50,11 +50,11 @@ public class ReplyVO {
 	public void setUpdatedate(Date updatedate) {
 		this.updatedate = updatedate;
 	}
-	public String getSuerName() {
-		return suerName;
+	public String getUserName() {
+		return userName;
 	}
-	public void setSuerName(String suerName) {
-		this.suerName = suerName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 	
@@ -62,7 +62,7 @@ public class ReplyVO {
 	@Override
 	public String toString() {
 		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", replytext=" + replytext + ", replyer=" + replyer
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", suerName=" + suerName + "]";
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", userName=" + userName + "]";
 	}
 	
 	

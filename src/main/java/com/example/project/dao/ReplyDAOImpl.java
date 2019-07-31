@@ -18,7 +18,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public List<ReplyVO> list(Integer bno) {
-		return sqlSession.selectList("replay.listReply", bno);
+		return sqlSession.selectList("reply.listReply", bno);
 	}
 
 	@Override

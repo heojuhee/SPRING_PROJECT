@@ -40,14 +40,12 @@ public class ReplyController {
 	}
 	
 	//3) 댓글 목록 -> RestController 이용 -> ajax로 전달된 값을
-	@RequestMapping("reply.listjson")
+	@RequestMapping("reply/listjson")
 	@ResponseBody //리턴 데이터를 json으로 변환
 	public List<ReplyVO> listJson(@RequestParam int bno){
 		List<ReplyVO> list = replyService.list(bno);
 		return list;
 	}
-	
-
 }
 
 
