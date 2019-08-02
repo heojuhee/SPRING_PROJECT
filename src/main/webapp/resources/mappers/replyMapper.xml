@@ -5,13 +5,14 @@
 
 <!-- 1.등록 -->
 <insert id="insertReply">
-insert into tbl_reply (bno, replytext, replyer)
+insert into tbl_reply (bno, replytext, replyer, secretreply)
 values (#{bno},#{replytext},#{replyer})
 </insert>
 
 <!-- 2. 댓글목록 -->
 <select id = "listReply" resultType = "com.example.project.vo.ReplyVO">
-select rno, bno, replytext, replyer, username, r.regdate, r.updatedate 
+select rno, bno, replytext, replyer, username, r.regdate, r.updatedate, secretreply,
+(select writer from tbl_board where bno=r.bno) as writer
 from tbl_reply r, tbl_member m
 where r.replyer = m.userid and bno=#{bno}
 order by rno desc

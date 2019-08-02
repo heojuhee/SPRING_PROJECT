@@ -2,12 +2,14 @@ package com.example.project.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.example.project.vo.ReplyVO;
 
 public interface ReplyService {
 	
 	//1) 목록
-	public List<ReplyVO> list(Integer bno);
+	public List<ReplyVO> list(Integer bno, HttpSession session );
 	
 	//2) 작성
 	public void create(ReplyVO vo);

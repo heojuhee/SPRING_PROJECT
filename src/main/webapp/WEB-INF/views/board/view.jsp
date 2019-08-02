@@ -43,7 +43,11 @@
 		$("#btnReply").click(function() {
 			var replytext = $("#replytext").val();
 			var bno = "${dto.bno}";
-			var param = "replytext=" + replytext + "&bno=" + bno;
+			var secretreply = "n";
+			if($("#secretreply").ls(":checked")){
+				secretreply = "y";
+			}
+			var param = "replytext=" + replytext + "&bno=" + bno + "$secretreply = "+secretreply;
 			
 			$.ajax({
 				type: "post",
@@ -129,6 +133,7 @@
 			<textarea name="replytext" id="replytext" rows="5" cols="80"
 				placeholder="댓글 작성해주세요"></textarea>
 			<br>
+			<input type = "checkbox" id = "secretreply"> 비밀댓글
 			<button type="button" id="btnReply">댓글작성</button>
 		</c:if>
 	</div>
